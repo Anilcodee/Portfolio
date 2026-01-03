@@ -5,7 +5,7 @@ import axios from "axios"
 export const dataContext = createContext()
 const UserContext = ({children}) => {
   const [userData, setUserData] = useState(null)
-  const serverUrl = "http://localhost:5000"
+  const serverUrl = "https://portfolio-sw84.onrender.com"
   const navigate = useNavigate()
   const getUserData = async () => {
     try {
