@@ -7,8 +7,11 @@ dotenv.config()
 export const createAdmin = async (req, res) => {
     try {
         const {email, password, adminKey} = req.body;
-        if(!email || !password || !adminKey){
+        if(!email || !password){
             return res.status(400).json({message: "Email and Password are required"});
+        }
+        if(!adminKey){
+            return res.status(400).json({message: "Not allowed to create account"});
         }
         if (adminKey !== process.env.ADMIN_SECRET_KEY) {
             return res.status(403).json({ message: "Unauthorized admin access" });
