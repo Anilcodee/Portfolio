@@ -194,7 +194,7 @@ const ProjectForm = ({project, onClose, onUpdate}) => {
                 }
 
                 {
-                    <button onClick={onClose} className='cursor-pointer text-[12px] mx-auto text-blue-500 underline flex justify-center items-center'>
+                    project && <button onClick={onClose} className='cursor-pointer text-[12px] mx-auto text-blue-500 underline flex justify-center items-center'>
                         Back
                     </button>
                 }

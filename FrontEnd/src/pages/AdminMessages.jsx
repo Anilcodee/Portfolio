@@ -34,8 +34,8 @@ const AdminMessages = () => {
                 <thead className='bg-gray-800 text-gray-300 border-b border-gray-700'>
                     <tr>
                         <th className='p-3 text-center'>Email</th>
-                        <th className='p-3 text-center'>Subject</th>
-                        <th className='p-3 text-center'>Date</th>
+                        <th className='p-3 text-center hidden sm:table-cell'>Subject</th>
+                        <th className='p-3 text-center hidden md:table-cell'>Date</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,8 +43,8 @@ const AdminMessages = () => {
                         (message) => (
                             <tr key={message._id}>
                                 <td className='p-3 hover:bg-gray-800 transition text-center'>{message.email}</td>
-                                <td className='p-3 hover:bg-gray-800 transition text-center'>{message.subject}</td>
-                                <td className='p-3 hover:bg-gray-800 transition text-center'>{new Date(message.createdAt).toLocaleDateString('en-US',{
+                                <td className='p-3 hover:bg-gray-800 transition text-center hidden sm:table-cell'>{message.subject}</td>
+                                <td className='p-3 hover:bg-gray-800 transition text-center hidden md:table-cell'>{new Date(message.createdAt).toLocaleDateString('en-US',{
                                     year: 'numeric',
                                     month: 'long',
                                     day: 'numeric'
