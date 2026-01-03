@@ -1,0 +1,54 @@
+.role-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 3px;
+  cursor: pointer;
+  font-size: 20px;        /* 👈 text size */
+  font-weight: 600;
+  color: white;
+}
+
+.role {
+  position: relative;
+  padding: 6px 14px;      /* 👈 smaller padding */
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+/* Single moving highlight */
+.highlight {
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  right: 3px;
+  height: calc(100% - 6px);
+  width: 50%;
+  background: #00df9a;
+  border-radius: 999px;
+  z-index: 1;
+  transition: transform 0.35s ease;
+}
+
+/* Default state */
+.coder {
+  color: #0f172a;
+}
+.developer {
+  color: white;
+}
+
+/* Hover → Developer highlighted */
+.role-switch:hover .highlight {
+  transform: translateX(94%);
+}
+
+.role-switch:hover .coder {
+  color: white;
+}
+
+.role-switch:hover .developer {
+  color: #0f172a;
+}
