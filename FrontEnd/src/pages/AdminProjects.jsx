@@ -4,6 +4,7 @@ import axios from 'axios';
 import ProjectForm from '../components/ProjectForm.jsx';
 import { NavLink } from 'react-router-dom';
 import { dataContext } from '../context/UserContext.jsx';
+import toast from 'react-hot-toast';
 const AdminProjects = () => {
   const {serverUrl} = useContext(dataContext)
   const [openProject, setOpenProject] = useState(false)
@@ -21,7 +22,7 @@ const AdminProjects = () => {
       setProjectData(prev => prev.filter(project => project._id !== id))
     } catch (error) {
       console.log(error)
-      alert(error)
+      toast.error(error.response?.data?.message || "Internal Server Error");
     }
   }
 
@@ -35,7 +36,7 @@ const AdminProjects = () => {
         console.log(data)
       } catch (error) {
         console.log(error)
-        alert(error)
+        toast.error(error.response?.data?.message || "Internal Server Error");
       }
     }
     fetchProjects()

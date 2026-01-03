@@ -3,14 +3,17 @@ import { Codesandbox } from '../icons/Codesandbox.jsx'
 import { useNavigate } from 'react-router-dom'
 import { dataContext } from '../context/UserContext.jsx'
 import axios from "axios"
+import toast from 'react-hot-toast'
 const AdminLogin = () => {
   const {userData, setUserData, serverUrl, getUserData} = useContext(dataContext)
   const navigate = useNavigate()
   const [adminEmail, setAdminEmail] = useState("")
   const [adminPassword, setAdminPassword] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const handleLogin = async (e) => {
     e.preventDefault()
+    setLoading(true)
     try {
         const {data} = await axios.post(serverUrl + "/api/admin/login",
             {
@@ -20,11 +23,14 @@ const AdminLogin = () => {
             {withCredentials:true}
         )
         setUserData(data.admin)
+        setLoading(false)
         await getUserData()
         navigate('/admin/dashboard')
+        toast.success("Logged in successfully!")
     } catch (error) {
         console.log(error)
-        alert(error)
+        setLoading(false)
+        toast.error(error.response?.data?.message || "Internal Server Error");
     }
   }
   return (
@@ -53,7 +59,7 @@ const AdminLogin = () => {
                 </div>
 
                 <button className='mx-auto w-20 h-10 mt-4 rounded border border-gray-500 bg-[#00df9a] font-bold transition-transform duration-300 hover:scale-105'>
-                    Login
+                    {loading ? "Loading...":"Login"}
                 </button>
             </form>
 

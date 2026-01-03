@@ -5,7 +5,7 @@ export const submitContactForm = async (req, res) => {
     try {
         const {email, subject, message} = req.body;
         if(!email || !subject || !message){
-            return res.status(400).send("All fields are required"); 
+            return res.status(400).json({message: "All fields are required"}); 
         }
 
         const newContact = await Contact.create({
@@ -17,12 +17,12 @@ export const submitContactForm = async (req, res) => {
         const resMail = sendMail(process.env.USER_EMAIL, subject, message, email);
 
         if(!resMail) {
-            return res.status(500).send("Failed to send email");
+            return res.status(500).json({message: "Failed to send email"});
         }
 
         return res.status(201).send({user: newContact});
     } catch (error) {
-        return res.status(500).send("Internal Server Error");
+        return res.status(500).json({message: "Internal Server Error"});
     }
 }
 

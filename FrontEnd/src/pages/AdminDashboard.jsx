@@ -3,6 +3,7 @@ import StatCard from '../components/StatCard.jsx'
 import { dataContext } from '../context/UserContext.jsx'
 import axios from 'axios'
 import add from '../assets/add.svg'
+import toast from 'react-hot-toast'
 
 
 const AdminDashboard = () => {
@@ -22,9 +23,9 @@ const AdminDashboard = () => {
       setLoading(false)
       console.log(data)
       setSelectedFile(null)
-      alert("Changed Successfully")
+      toast.success("Image changed Successfully")
     } catch (error) {
-      alert(error)
+      toast.error(error.response?.data?.message || "Internal Server Error");
     }
   }
   useEffect(() => {
@@ -36,6 +37,7 @@ const AdminDashboard = () => {
         setStats(data)
       } catch (error) {
         console.log(error)
+        toast.error(error.response?.data?.message || "Internal Server Error");
       }
     }
     fetchStats()

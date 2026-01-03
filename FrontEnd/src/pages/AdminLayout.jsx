@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import hamburger from '../assets/hamburger.svg'
+import toast from "react-hot-toast";
 
 const AdminLayout = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false)
+
+  const handleLogout = () => {
+    navigate("/admin/login")
+    toast.success("Logout successfully!")
+  }
   
   return (
     <div className="min-h-screen flex bg-[#29323c] text-gray-100">
@@ -21,7 +27,7 @@ const AdminLayout = () => {
         </nav>
 
         <button
-          onClick={() => navigate("/admin/login")}
+          onClick={handleLogout}
           className="font-semibold mt-10 text-sm border rounded-3xl px-8 py-2 bg-red-500 ml-4 transition-transform duration-300 hover:scale-105"
         >
           Logout

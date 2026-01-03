@@ -11,30 +11,60 @@ import AdminMessages from './pages/AdminMessages.jsx'
 import AdminProjects from './pages/AdminProjects.jsx'
 import AdminAnalytics from './pages/AdminAnalytics.jsx'
 import ProjectForm from './components/ProjectForm.jsx'
+import {Toaster} from "react-hot-toast"
 
 const App = () => {
   const {userData, setUserData} = useContext(dataContext)
   return (
-    <Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/admin/login' element={<AdminLogin/>}/>
-      <Route path='/admin/signup' element={<AdminSignUp/>}/>
-      <Route 
-        path='/admin'
-        element={
-          <ProtectedRoute>
-            <AdminLayout/>
-          </ProtectedRoute>
-        }
-      >
-        <Route index element={<Navigate to="dashboard" replace/>}/>
-        <Route path="dashboard" element={<AdminDashboard/>}/>
-        <Route path="messages" element={<AdminMessages/>}/>
-        <Route path="projects" element={<AdminProjects/>}/>
-        <Route path="analytics" element={<AdminAnalytics/>}/>
-        <Route path='projectformfill' element={<ProjectForm/>}/>
-      </Route>
-    </Routes>
+    <>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        gutter={12}
+        toastOptions={{
+          duration: 2000, // stays 4 seconds
+          style: {
+            background: "#1f2933",
+            color: "#ffffff",
+            border: "1px solid #00df9a",
+            padding: "10px 14px",
+            fontSize: "14px",
+          },
+          success: {
+            iconTheme: {
+              primary: "#00df9a",
+              secondary: "#0f172a",
+            },
+          },
+          error: {
+            iconTheme: {
+              primary: "#ef4444",
+              secondary: "#0f172a",
+            },
+          },
+        }}
+      />
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/admin/login' element={<AdminLogin/>}/>
+        <Route path='/admin/signup' element={<AdminSignUp/>}/>
+        <Route 
+          path='/admin'
+          element={
+            <ProtectedRoute>
+              <AdminLayout/>
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Navigate to="dashboard" replace/>}/>
+          <Route path="dashboard" element={<AdminDashboard/>}/>
+          <Route path="messages" element={<AdminMessages/>}/>
+          <Route path="projects" element={<AdminProjects/>}/>
+          <Route path="analytics" element={<AdminAnalytics/>}/>
+          <Route path='projectformfill' element={<ProjectForm/>}/>
+        </Route>
+      </Routes>
+    </>
   )
 }
 

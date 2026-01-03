@@ -14,6 +14,7 @@ import MessageForm from '../components/MessageForm.jsx'
 import { useRef } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 
 const Home = () => {
   const [projects, setProjects] = useState([])
@@ -29,7 +30,7 @@ const Home = () => {
         setProjects(data.Projects)
         console.log(data.Projects)
       } catch (error) {
-        alert(error)
+        toast.error(error.response?.data?.message || "Internal Server Error");
       }
     }
     
@@ -39,7 +40,7 @@ const Home = () => {
         setProfile(data.Profile)
         console.log(data.Profile)
       } catch (error) {
-        alert(error)
+        toast.error(error.response?.data?.message || "Internal Server Error");
       }
     }
     

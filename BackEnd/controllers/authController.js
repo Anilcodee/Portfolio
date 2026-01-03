@@ -11,12 +11,12 @@ export const createAdmin = async (req, res) => {
             return res.status(403).json({ message: "Unauthorized admin access" });
         }
         if(!email || !password){
-            return res.status(400).send("Email and Password are required");
+            return res.status(400).json({message: "Email and Password are required"});
         }
         const existingAdmin = await Admin.findOne({email})
 
         if(existingAdmin){
-            return res.status(409).send("Admin already exists");
+            return res.status(409).json({message: "Admin already exists"});
         }
 
         const hashed_password = await bcrypt.hash(password, 10);
@@ -31,7 +31,7 @@ export const createAdmin = async (req, res) => {
             token = generateToken(newAdmin._id);
         } catch (error) {
             console.error("Token generation failed: ", error);
-            return res.status(500).send("Internal Server Error");
+            return res.status(500).json({message: "Token generation error"});
         }
 
         res.cookie('token', token, {
@@ -45,7 +45,7 @@ export const createAdmin = async (req, res) => {
             email: newAdmin.email
         }});
     } catch (error) {
-        return res.status(500).send("Internal Server Error");
+        return res.status(500).json({message: "Internal Server Error"});
     }
 }
 
@@ -53,17 +53,17 @@ export const loginAdmin = async (req, res) => {
     try {
         const {email, password} = req.body;
         if(!email || !password){
-            return res.status(400).send("Email and Password are required");
+            return res.status(400).json({message: "Email and Password are required"});
         }
 
         const existingAdmin = await Admin.findOne({email});
 
         if(!existingAdmin){
-            return res.status(404).send("Admin not found");
+            return res.status(404).json({message: "Admin not found"});
         }
         let match = await bcrypt.compare(password, existingAdmin.password)
         if(!match){
-            return res.status(401).send("Invalid Password");
+            return res.status(401).json({message: "Invalid Password"});
         }
 
         let token;
@@ -72,7 +72,7 @@ export const loginAdmin = async (req, res) => {
             token = generateToken(existingAdmin._id);
         } catch (error) {
             console.error("Token generation failed: ", error);
-            return res.status(500).send("Internal Server Error");
+            return res.status(500).json({message: "Token generation error"});
         }
 
         res.cookie('token', token, {
@@ -86,7 +86,7 @@ export const loginAdmin = async (req, res) => {
             email: existingAdmin.email
         }});
     } catch (error) {
-        return res.status(500).send("Internal Server Error");
+        return res.status(500).json({message: "Internal Server Error"});
     }
 }
 
@@ -94,7 +94,7 @@ export const logoutAdmin = async (req, res) => {
     try {
         res.status(200).json({message:"Admin logged out successfully"});
     } catch (error) {
-        res.status(500).send("Internal Server Error");
+        res.status(500).json({message: "Internal Server Error"});
     }
 }
 
@@ -102,15 +102,15 @@ export const getAdminProfile = async (req, res) => {
     try {
         const userId = req.userId;
         if(!userId){
-            return res.status(401).send("Unauthorized");
+            return res.status(401).json({message: "Unauthorized"});
         }
         const admin = await Admin.findById(userId).select('-password');
         if(!admin){
-            return res.status(404).send("Admin not found");
+            return res.status(404).json({message: "Admin not found"});
         }
         return res.status(200).json({admin});
     } catch (error) {
-        return res.status(500).send("Internal Server Error");
+        return res.status(500).json({message: "Internal Server Error"});
     }
 }
 

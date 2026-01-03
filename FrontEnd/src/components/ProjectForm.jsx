@@ -3,6 +3,8 @@ import add from '../assets/add.svg'
 import axios from 'axios'
 import { dataContext } from '../context/UserContext.jsx'
 import { useNavigate } from 'react-router-dom'
+import toast from "react-hot-toast";
+
 
 const ProjectForm = ({project, onClose, onUpdate}) => {
   const [addProject, setAddProject] = useState(null)
@@ -76,7 +78,7 @@ const ProjectForm = ({project, onClose, onUpdate}) => {
             onUpdate(data.Project);
             resetForm()
             console.log(data)
-            alert("Project updated successfully!")
+            toast.success("Project updated successfully!")
         }else{
             const {data} = await axios.post(`${serverUrl}/api/admin/projects`, formdata, {
                 withCredentials:true
@@ -84,13 +86,13 @@ const ProjectForm = ({project, onClose, onUpdate}) => {
             setAddProject(data)
             resetForm()
             console.log(data)
-            alert("Project added successfully!")
+            toast.success("Project added successfully!")
         }
         
         setLoading(false)
     } catch (error) {
         console.log(error.message)
-        alert(error)
+        toast.error(error.response?.data?.message || "Internal Server Error");
     }
   }
 

@@ -5,6 +5,8 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import { useContext } from 'react'
 import { dataContext } from '../context/UserContext.jsx'
+import toast from "react-hot-toast";
+
 
 const AdminAnalytics = () => {
   const {serverUrl} = useContext(dataContext)
@@ -18,7 +20,7 @@ const AdminAnalytics = () => {
         })
         setVisitData(data)
       } catch (error) {
-        alert(error)
+        toast.error(error.response?.data?.message || "Internal Server Error");
       }
     }
     fetchVisits()
@@ -39,7 +41,7 @@ const AdminAnalytics = () => {
                 <thead className='bg-gray-800 text-gray-300 border-b border-gray-700'>
                     <tr>
                         <th className='p-3 text-center'>IP</th>
-                        <th className='p-3 text-center hidden md:table-cell'>UserAgent</th>
+                        <th className='p-3 text-center hidden sm:table-cell'>UserAgent</th>
                         <th className='p-3 text-center hidden md:table-cell'>Date</th>
                     </tr>
                 </thead>
@@ -48,7 +50,7 @@ const AdminAnalytics = () => {
                         (message) => (
                             <tr key={message._id}>
                                 <td className='p-3 hover:bg-gray-800 transition text-center'>{message.ip}</td>
-                                <td className='p-3 hover:bg-gray-800 transition text-center hidden md:table-cell'>{message.userAgent}</td>
+                                <td className='p-3 hover:bg-gray-800 transition text-center hidden sm:table-cell'>{message.userAgent}</td>
                                 <td className='p-3 hover:bg-gray-800 transition text-center hidden md:table-cell'>{new Date(message.createdAt).toLocaleDateString('en-US',{
                                     year: 'numeric',
                                     month: 'long',

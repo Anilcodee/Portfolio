@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { dataContext } from '../context/UserContext.jsx'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 
 const AdminMessages = () => {
   const {serverUrl} = useContext(dataContext)
@@ -16,6 +17,7 @@ const AdminMessages = () => {
             console.log(data)
         } catch (error) {
             console.log(error)
+            toast.error(error.response?.data?.message || "Internal Server Error");
         }
     }
     fetchContact()

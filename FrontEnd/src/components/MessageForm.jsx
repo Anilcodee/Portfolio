@@ -3,6 +3,8 @@ import { useState } from 'react'
 import axios from "axios"
 import send from '../assets/send.svg'
 import { dataContext } from '../context/UserContext.jsx';
+import toast from "react-hot-toast";
+
 
 const MessageForm = ({ onClose }) => {
   let {serverUrl} = useContext(dataContext)
@@ -24,7 +26,7 @@ const MessageForm = ({ onClose }) => {
       setUserSubject("")
     } catch (error) {
       console.log(error)
-      alert(error)
+      toast.error(error.response?.data?.message || "Internal Server Error");
     }
   }
   return (
