@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { dataContext } from './context/userContext.jsx'
+import { dataContext } from './context/UserContext.jsx'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import AdminLogin from './pages/AdminLogin.jsx'

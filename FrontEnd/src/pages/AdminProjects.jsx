@@ -3,7 +3,7 @@ import add from '../assets/add.svg'
 import axios from 'axios';
 import ProjectForm from '../components/ProjectForm.jsx';
 import { NavLink } from 'react-router-dom';
-import { dataContext } from '../context/userContext.jsx';
+import { dataContext } from '../context/UserContext.jsx';
 const AdminProjects = () => {
   const {serverUrl} = useContext(dataContext)
   const [openProject, setOpenProject] = useState(false)

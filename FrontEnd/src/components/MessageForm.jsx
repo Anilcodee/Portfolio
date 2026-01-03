@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { useState } from 'react'
 import axios from "axios"
 import send from '../assets/send.svg'
-import { dataContext } from '../context/userContext.jsx';
+import { dataContext } from '../context/UserContext.jsx';
 
 const MessageForm = ({ onClose }) => {
   let {serverUrl} = useContext(dataContext)

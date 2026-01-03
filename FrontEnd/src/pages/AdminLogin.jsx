@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
-import { Codesandbox } from '../icons/Codesandbox'
+import { Codesandbox } from '../icons/Codesandbox.jsx'
 import { useNavigate } from 'react-router-dom'
-import { dataContext } from '../context/userContext'
+import { dataContext } from '../context/UserContext.jsx'
 import axios from "axios"
 const AdminLogin = () => {
   const {userData, setUserData, serverUrl, getUserData} = useContext(dataContext)

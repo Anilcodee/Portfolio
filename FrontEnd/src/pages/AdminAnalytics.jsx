@@ -1,10 +1,10 @@
 import React from 'react'
-import StatCard from '../components/StatCard'
+import StatCard from '../components/StatCard.jsx'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { useContext } from 'react'
-import { dataContext } from '../context/userContext'
+import { dataContext } from '../context/UserContext.jsx'
 
 const AdminAnalytics = () => {
   const {serverUrl} = useContext(dataContext)

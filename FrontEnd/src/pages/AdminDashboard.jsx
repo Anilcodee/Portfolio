@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import StatCard from '../components/StatCard.jsx'
-import { dataContext } from '../context/userContext.jsx'
+import { dataContext } from '../context/UserContext.jsx'
 import axios from 'axios'
 import add from '../assets/add.svg'
 

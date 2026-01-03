@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { dataContext } from '../context/userContext.jsx'
+import { dataContext } from '../context/UserContext.jsx'
 import axios from 'axios'
 
 const AdminMessages = () => {

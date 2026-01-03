@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import add from '../assets/add.svg'
 import axios from 'axios'
-import { dataContext } from '../context/userContext.jsx'
+import { dataContext } from '../context/UserContext.jsx'
 import { useNavigate } from 'react-router-dom'
 
 const ProjectForm = ({project, onClose, onUpdate}) => {

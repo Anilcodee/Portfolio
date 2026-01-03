@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { dataContext } from '../context/userContext.jsx'
+import { dataContext } from '../context/UserContext.jsx'
 import image from '../assets/User-Image.jpeg'
 import p1 from '../assets/Virtual_Assistant_project_image.png'
 import p2 from '../assets/Paste_App_project_image.png'
