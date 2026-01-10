@@ -1,13 +1,20 @@
+import ImageSkeleton from "./ImageSkeleton";
+import imageNotFound from "../assets/browser.webp"
+
 const ProjectCard = ({ title, desc, tech, github, live, img }) => {
+  const optimizedImageProject = img.replace(
+    "/upload/",
+    "/upload/f_auto,q_auto,w_600/"
+  )
   return (
     <div
       className="max-w-90 bg-[#1f2933] rounded-xl overflow-hidden border border-gray-700 transition-all duration-300 hover:-translate-y-2 hover:border-[#00df9a] hover:shadow-xl hover:shadow-black/30">
       <div className="h-48 overflow-hidden">
-        <img
-          src={img}
+        <ImageSkeleton
+          src={optimizedImageProject}
           alt={title}
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-          loading="lazy"
+          containerClass="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          imageFallBack={imageNotFound}
         />
       </div>
 

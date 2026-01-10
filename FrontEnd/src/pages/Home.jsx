@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { dataContext } from '../context/UserContext.jsx'
-import image from '../assets/User-Image.jpeg'
+import image from '../assets/User-ImageWeb.webp'
 import p1 from '../assets/Virtual_Assistant_project_image.png'
 import p2 from '../assets/Paste_App_project_image.png'
 import instagram from '../assets/instagram.svg'
@@ -15,6 +15,7 @@ import { useRef } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
+import ImageSkeleton from '../components/ImageSkeleton.jsx'
 
 const Home = () => {
   const [projects, setProjects] = useState([])
@@ -52,6 +53,11 @@ const Home = () => {
     return <p className='text-gray-400'>Loading Details...</p>
   }
 
+  const optimizedImageProfile = profile[0]?.profileImage.replace(
+    "/upload/",
+    "/upload/f_auto,q_auto,w_600/"
+  )
+
   return (
     <div className='w-full min-h-screen text-gray-100 flex flex-col bg-linear-to-tr from-[#29323c] to-[#485563]'>
       <section id='Home' className='w-full flex h-16 px-6 justify-between items-center border-b border-gray-600 bg-[#1f2933] sticky top-0 z-50'>
@@ -87,11 +93,11 @@ const Home = () => {
         )}
 
       <section className='w-full flex flex-col md:flex-row justify-center items-center gap-12 py-20 border-b border-gray-600'>
-        <img
-          src={profile[0]?.profileImage}
+        <ImageSkeleton
+          src={optimizedImageProfile}
           alt="Profile"
-          className="w-40 h-40 md:w-48 mid:h-48 p-2 border border-teal-400 rounded-md object-cover"
-          loading='lazy'
+          imageFallBack={image}
+          containerClass="w-40 h-40 md:w-48 md:h-48 p-2 border border-teal-400 rounded-md"
         />
         <div className='font-bold text-3xl text-center md:text-left flex flex-col justify-center items-center gap-2'>
           Hi, I’m Anil
