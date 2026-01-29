@@ -46,9 +46,9 @@ const AdminAnalytics = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {visitData.recentVisits.map(
-                        (message) => (
-                            <tr key={message._id}>
+                    {visitData.recentVisits?.map(
+                        (message, index) => (
+                            <tr key={message._id || index}>
                                 <td className='p-3 hover:bg-gray-800 transition text-center'>{message.ip}</td>
                                 <td className='p-3 hover:bg-gray-800 transition text-center hidden sm:table-cell'>{message.userAgent}</td>
                                 <td className='p-3 hover:bg-gray-800 transition text-center hidden md:table-cell'>{new Date(message.createdAt).toLocaleDateString('en-US',{

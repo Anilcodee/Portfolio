@@ -16,6 +16,10 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import ImageSkeleton from '../components/ImageSkeleton.jsx'
+import {SiPython, SiCplusplus, SiReact, SiNodedotjs, SiMongodb} from 'react-icons/si'
+import { FaJava } from "react-icons/fa";
+import {FaCode} from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
   const [projects, setProjects] = useState([])
@@ -23,6 +27,16 @@ const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const {serverUrl} = useContext(dataContext)
   const [profile, setProfile] = useState([])
+
+  const skills = [
+  { name: "Python", icon: <SiPython /> },
+  { name: "C++", icon: <SiCplusplus /> },
+  { name: "Java", icon: <FaJava /> },
+  { name: "React", icon: <SiReact /> },
+  { name: "Node.js", icon: <SiNodedotjs /> },
+  { name: "MongoDB", icon: <SiMongodb /> },
+  { name: "DSA", icon: <FaCode /> }
+];
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -60,10 +74,12 @@ const Home = () => {
 
   return (
     <div className='w-full min-h-screen text-gray-100 flex flex-col bg-linear-to-tr from-[#29323c] to-[#485563]'>
-      <section id='Home' className='w-full flex h-16 px-6 justify-between items-center border-b border-gray-600 bg-[#1f2933] sticky top-0 z-50'>
+      <section className='w-full flex h-16 px-6 justify-between items-center border-b border-gray-600 bg-[#1f2933] sticky top-0 z-50'>
         <div className='flex items-center gap-2'>
           <Codesandbox/>
-          <span className='font-bold hover:text-[#00df9a]'>Codee</span>
+          <span className='font-bold hover:text-[#00df9a]'>
+            <a href="/">Codee</a>
+          </span>
         </div>
         {/* Desktop */}
         <div>
@@ -72,6 +88,7 @@ const Home = () => {
             <a href="#About" className='hover:text-[#00df9a] px-3 py-1 rounded-full hover:bg-gray-800 transition-transform duration-300 hover:scale-105'>About</a>
             <a href="#Projects" className='hover:text-[#00df9a] px-3 py-1 rounded-full hover:bg-gray-800 transition-transform duration-300 hover:scale-105'>Projects</a>
             <a href="#Contact" className='hover:text-[#00df9a] px-3 py-1 rounded-full hover:bg-gray-800 transition-transform duration-300 hover:scale-105'>Contact</a>
+            <a href="/blogs" className='hover:text-[#00df9a] px-3 py-1 rounded-full hover:bg-gray-800 transition-transform duration-300 hover:scale-105'>Blogs</a>
           </nav>
         </div>
 
@@ -88,11 +105,12 @@ const Home = () => {
               <a href="#About" onClick={() => setMenuOpen(false)}>About</a>
               <a href="#Projects" onClick={() => setMenuOpen(false)}>Projects</a>
               <a href="#Contact" onClick={() => setMenuOpen(false)}>Contact</a>
+              <a href="/blogs" onClick={() => setMenuOpen(false)}>Blogs</a>
             </nav>
         </div>
         )}
 
-      <section className='w-full flex flex-col md:flex-row justify-center items-center gap-12 py-20 border-b border-gray-600'>
+      <section id='Home' className='w-full flex flex-col md:flex-row justify-center items-center gap-12 py-20 border-b border-gray-600'>
         <ImageSkeleton
           src={optimizedImageProfile}
           alt="Profile"
@@ -132,15 +150,21 @@ const Home = () => {
           <div>
             <h2 className="text-2xl font-bold mb-4">Skills</h2>
             <div className="flex flex-wrap justify-center gap-3">
-              {["Python", "C++", "Java", "React", "Node.js", "MongoDB", "DSA"].map(
-                (skill) => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1 rounded-full bg-gray-800 hover:bg-[#00df9a] hover:text-black transition">
-                    {skill}
-                  </span>
-                )
-              )}
+              {skills.map((skill) => (
+                <span
+                  key={skill.name}
+                  className="
+                    flex items-center gap-2
+                    px-4 py-1.5 rounded-full
+                    bg-gray-800 text-gray-200
+                    hover:bg-[#00df9a] hover:text-black
+                    transition-all duration-200 hover:scale-105 active:scale-95
+                  "
+                >
+                  <span className="text-lg">{skill.icon}</span>
+                  <span className="text-[14px] font-medium">{skill.name}</span>
+                </span>
+              ))}
             </div>
           </div>
 

@@ -24,6 +24,8 @@ const AdminLayout = () => {
           <NavLink to="/admin/messages" onClick={() => setOpen(false)} className={({isActive}) => `px-7 py-2 rounded transition ${isActive? "bg-gray-800 text-[#00df9a] border-l-4 border-[#00df9a]":"text-gray-300 hover:text-[#00df9a]"}`}>Messages</NavLink>
           <NavLink to="/admin/projects" onClick={() => setOpen(false)} className={({isActive}) => `px-7 py-2 rounded transition ${isActive? "bg-gray-800 text-[#00df9a] border-l-4 border-[#00df9a]":"text-gray-300 hover:text-[#00df9a]"}`}>Projects</NavLink>
           <NavLink to="/admin/analytics" onClick={() => setOpen(false)} className={({isActive}) => `px-7 py-2 rounded transition ${isActive? "bg-gray-800 text-[#00df9a] border-l-4 border-[#00df9a]":"text-gray-300 hover:text-[#00df9a]"}`}>Analytics</NavLink>
+          <NavLink to="/admin/blogs" onClick={() => setOpen(false)} className={({isActive}) => `px-7 py-2 rounded transition ${isActive? "bg-gray-800 text-[#00df9a] border-l-4 border-[#00df9a]":"text-gray-300 hover:text-[#00df9a]"}`}>Blogs</NavLink>
+          <NavLink to="/admin/comments" onClick={() => setOpen(false)} className={({isActive}) => `px-7 py-2 rounded transition ${isActive? "bg-gray-800 text-[#00df9a] border-l-4 border-[#00df9a]":"text-gray-300 hover:text-[#00df9a]"}`}>Comments</NavLink>
         </nav>
 
         <button

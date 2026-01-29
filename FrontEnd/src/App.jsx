@@ -12,6 +12,11 @@ import AdminProjects from './pages/AdminProjects.jsx'
 import AdminAnalytics from './pages/AdminAnalytics.jsx'
 import ProjectForm from './components/ProjectForm.jsx'
 import {Toaster} from "react-hot-toast"
+import ViewBlogs from './pages/ViewBlogs.jsx'
+import BlogForm from './components/BlogForm.jsx'
+import AdminBlogs from './pages/AdminBlogs.jsx'
+import BlogDetails from './pages/BlogDetails.jsx'
+import AdminComments from './pages/AdminComments.jsx'
 
 const App = () => {
   const {userData, setUserData} = useContext(dataContext)
@@ -46,6 +51,8 @@ const App = () => {
       />
       <Routes>
         <Route path='/' element={<Home/>}/>
+        <Route path='/blogs' element={<ViewBlogs/>}/>
+        <Route path='/blog/:slug' element={<BlogDetails/>}/>
         <Route path='/admin/login' element={<AdminLogin/>}/>
         <Route path='/admin/signup' element={<AdminSignUp/>}/>
         <Route 
@@ -61,7 +68,10 @@ const App = () => {
           <Route path="messages" element={<AdminMessages/>}/>
           <Route path="projects" element={<AdminProjects/>}/>
           <Route path="analytics" element={<AdminAnalytics/>}/>
+          <Route path="Comments" element={<AdminComments/>}/>
+          <Route path="blogs" element={<AdminBlogs/>}/>
           <Route path='projectformfill' element={<ProjectForm/>}/>
+          <Route path='blogformfill' element={<BlogForm/>}/>
         </Route>
       </Routes>
     </>
