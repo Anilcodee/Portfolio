@@ -5,7 +5,7 @@ import axios from "axios"
 export const dataContext = createContext()
 const UserContext = ({children}) => {
   const [userData, setUserData] = useState(null)
-  const serverUrl = "https://portfolio-amber-five-99.vercel.app"
+  const serverUrl = "https://portfolio-sw84.onrender.com"
   const navigate = useNavigate()
   const getUserData = async () => {
     try {
