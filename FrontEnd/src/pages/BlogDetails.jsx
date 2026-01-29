@@ -79,7 +79,7 @@ const BlogDetails = () => {
         <div className="relative z-10 max-w-full mx-auto px-8 h-full flex flex-col justify-end pb-12 text-white">
 
           <div className="flex flex-wrap gap-3 mb-4">
-            {blogDetails.tags.map(tag => (
+            {blogDetails.tags?.map(tag => (
               <span
                 key={tag}
                 className="bg-black/60 backdrop-blur px-3 py-1 rounded-full text-[12px] text-gray-600 border border-white/10 hover:bg-[#00df9a] hover:border-[#00df9a] transition"
@@ -115,7 +115,7 @@ const BlogDetails = () => {
           <div className="flex items-center gap-4 border-b border-gray-700 pb-6">
 
             <div className="w-12 h-12 rounded-full bg-[#00df9a] flex items-center justify-center text-black font-bold">
-              {blogDetails.author[0]}
+              {blogDetails?.author[0] || "A"}
             </div>
 
             <div>

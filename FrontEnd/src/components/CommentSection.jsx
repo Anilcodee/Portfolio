@@ -7,6 +7,7 @@ import { FaStar } from 'react-icons/fa'
 import axios from 'axios'
 import { toast } from "react-hot-toast"
 import { FaEllipsisV } from 'react-icons/fa'
+import avatar from "../assets/avatar.png"
 
 const CommentSection = ({blogId, openLogin}) => {
   const {serverUrl} = useContext(dataContext)
@@ -110,7 +111,7 @@ const CommentSection = ({blogId, openLogin}) => {
         {
           user ? (
             <div className='flex gap-3 items-center'>
-              <img src={user.avatar}
+              <img src={user?.avatar || avatar}
               className='w-10 h-10 rounded-full'
               alt="avatar" />
               <p className='text-[14px] font-medium'>{user.name}</p>
@@ -151,7 +152,7 @@ const CommentSection = ({blogId, openLogin}) => {
             {editingId === c._id ? (
               <div className='space-y-3'>
                   <div className='flex gap-3 items-center mb-3'>
-                    <img src={c.user.avatar} alt={c.user.name} className='w-9 h-9 rounded-full'/>
+                    <img src={c.user?.avatar || avatar} alt={c.user.name} className='w-9 h-9 rounded-full'/>
                     <p className='font-medium text-[14px]'>
                       {c.user.name}
                     </p>
