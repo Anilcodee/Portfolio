@@ -112,7 +112,7 @@ const ProjectForm = ({project, onClose, onUpdate}) => {
 
                 <div className='flex flex-col gap-2 text-[14px]'>
                     <span className='text-start'>Description : </span>
-                    <textarea value={desc} onChange={(e) => setDesc(e.target.value)} placeholder="write your project description here" className='text-[12px] outline-none pl-2 rounded border border-gray-500 hover:border-[#00df9a] transition'
+                    <textarea value={desc} onChange={(e) => setDesc(e.target.value)} placeholder="write your project description here" className='text-[12px] outline-none pl-2 rounded border border-gray-500 hover:border-[#00df9a] transition resize-none'
                     />
                 </div>
 
@@ -196,7 +196,7 @@ const ProjectForm = ({project, onClose, onUpdate}) => {
                 }
 
                 {
-                    project && <button onClick={onClose} className='cursor-pointer text-[12px] mx-auto text-blue-500 underline flex justify-center items-center'>
+                    project && <button onClick={onClose} className='cursor-pointer text-[12px] mx-auto text-blue-500 hover:underline flex justify-center items-center'>
                         Back
                     </button>
                 }

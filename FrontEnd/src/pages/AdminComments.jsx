@@ -68,7 +68,7 @@ const AdminComments = () => {
                   <td className='p-3 hover:bg-gray-800 transition text-center'>
                     <div className='flex gap-2 items-center justify-center'>
                       <img src={c.user.avatar} className='w-8 h-8 rounded-full'/>
-                      <span className='hidden sm:block'>{c.user.name}</span>
+                      <span className='hidden md:block'>{c.user.name}</span>
                     </div>
                   </td>
                   <td className='p-3 hover:bg-gray-800 transition text-center hidden sm:table-cell'>
@@ -83,7 +83,7 @@ const AdminComments = () => {
                     <span>{c.rating}</span>
                     </div>
                   </td>
-                  <td className='p-3 max-w-md truncate hover:bg-gray-800 transition text-center'>
+                  <td className='p-3 max-w-md flex flex-wrap hover:bg-gray-800 transition items-center justify-center'>
                     {c.text}
                   </td>
                   <td className='p-3 hover:bg-gray-800 transition text-center hidden md:table-cell'>{new Date(c.createdAt).toLocaleDateString('en-US', options)}</td>

@@ -112,12 +112,12 @@ const BlogForm = ({blog, onClose, onUpdate}) => {
                 </div>
                 <div className='flex flex-col gap-2 text-[14px]'>
                     <span className='text-start'>Content : </span>
-                    <textarea value={content} onChange={(e) => setContent(e.target.value)} placeholder="write your project description here" className='text-[12px] outline-none pl-2 rounded border border-gray-500 hover:border-[#00df9a] transition'
+                    <textarea value={content} onChange={(e) => setContent(e.target.value)} placeholder="write your project description here" className='h-100 text-[12px] outline-none pl-2 rounded border border-gray-500 hover:border-[#00df9a] transition resize-none'
                     />
                 </div>
                 <div className='flex flex-col gap-2 text-[14px]'>
                     <span className='text-start'>Author : </span>
-                    <textarea value={AuthorName} onChange={(e) => setAuthorName(e.target.value)} placeholder="write your project description here" className='text-[12px] outline-none pl-2 rounded border border-gray-500 hover:border-[#00df9a] transition'
+                    <input value={AuthorName} onChange={(e) => setAuthorName(e.target.value)} placeholder="write your project description here" className='text-[12px] outline-none pl-2 rounded border border-gray-500 hover:border-[#00df9a] transition'
                     />
                 </div>
                 <div className='border border-gray-500 rounded-md p-3'>
