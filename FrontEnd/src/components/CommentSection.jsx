@@ -102,19 +102,19 @@ const CommentSection = ({blogId, openLogin}) => {
   
   return (
     <div className="border-t border-gray-700 pt-10">
-      <h3 className='text-xl font-semibold mb-6'>
+      <h3 className='text-xl text-gray-400 dark:text-gray-200 font-semibold mb-6'>
         Comments ({comments.length})
       </h3>
 
       {!editingId &&
-      <div className="bg-[#29323c] p-6 rounded-xl space-y-5 border border-gray-700">
+      <div className="dark:bg-[#29323c] p-6 rounded-xl space-y-5 border border-gray-700">
         {
           user ? (
             <div className='flex gap-3 items-center'>
               <img src={user?.avatar || avatar}
               className='w-10 h-10 rounded-full'
               alt="avatar" />
-              <p className='text-[14px] font-medium'>{user.name}</p>
+              <p className='text-[14px] font-medium text-gray-400 dark:text-gray-200'>{user.name}</p>
             </div>
           ) : (
             <p className='text-[14px] text-gray-400'>Login to comment</p>
@@ -134,7 +134,7 @@ const CommentSection = ({blogId, openLogin}) => {
           ))}
         </div>
 
-        <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder='Write your thoughts...' className='w-full bg-[#1f2933] p-3 rounded-lg outline-none resize-none min-h-22.5'/>
+        <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder='Write your thoughts...' className='w-full border text-gray-400 border-gray-300 dark:border-gray-500 dark:bg-[#1f2933] p-3 rounded-lg outline-none resize-none min-h-22.5'/>
         
         <div className='flex justify-end'>
           <button onClick={submitComment} className='cursor-pointer bg-[#00df9a] text-black px-5 py-2 rounded-full font-medium hover:opacity-90'>
@@ -147,13 +147,13 @@ const CommentSection = ({blogId, openLogin}) => {
       <div className='mt-10 space-y-4'>
         {comments.map((c) => (
           <div key={c._id}
-            className='bg-[#29323c] p-5 rounded-xl border border-gray-700'
+            className='dark:bg-[#29323c] p-5 rounded-xl border border-gray-700'
           >
             {editingId === c._id ? (
               <div className='space-y-3'>
                   <div className='flex gap-3 items-center mb-3'>
                     <img src={c.user?.avatar || avatar} alt={c.user.name} className='w-9 h-9 rounded-full'/>
-                    <p className='font-medium text-[14px]'>
+                    <p className='font-medium text-[14px] text-gray-400 dark:text-gray-200'>
                       {c.user.name}
                     </p>
                     
@@ -169,10 +169,10 @@ const CommentSection = ({blogId, openLogin}) => {
                     ))}
                   </div>
 
-                  <textarea value={editText} onChange={(e) => setEditText(e.target.value)} className='w-full bg-[#1f2933] p-3 rounded-lg outline-none resize-none min-h-22.5'/>
+                  <textarea value={editText} onChange={(e) => setEditText(e.target.value)} className='w-full dark:bg-[#1f2933] text-gray-400 dark:text-gray-200 p-3 rounded-lg outline-none resize-none min-h-22.5'/>
 
                   <div className='flex gap-3 justify-end'>
-                    <button onClick={() => setEditingId(null)} className='cursor-pointer px-4 py-1 text-[14px] border border-gray-600 rounded'>
+                    <button onClick={() => setEditingId(null)} className='text-gray-400 dark:text-gray-200 cursor-pointer px-4 py-1 text-[14px] border border-gray-600 rounded'>
                       Cancel
                     </button>
                     <button onClick={() => handleUpdate(c._id)} className='px-4 cursor-pointer py-1 text-[14px] bg-[#00fd9a] text-black rounded'>
@@ -186,7 +186,7 @@ const CommentSection = ({blogId, openLogin}) => {
                   <img src={c.user.avatar} alt={c.user.name} className='w-9 h-9 rounded-full'/>
                 
                   <div>
-                    <p className='font-medium text-[14px]'>{c.user.name}</p>
+                    <p className='font-medium text-[14px] text-gray-400 dark:text-gray-200'>{c.user.name}</p>
                     <div className='flex gap-1 text-yellow-400'>
                       {[...Array(5)].map((_, i) => (
                         <FaStar
@@ -203,24 +203,24 @@ const CommentSection = ({blogId, openLogin}) => {
                     <button onClick={(e) => {
                       e.stopPropagation()
                       setActiveMenuId(prev => prev === c._id ? null : c._id)
-                    }} className='cursor-pointer p-2 hover:bg-gray-700 rounded-full'>
+                    }} className='cursor-pointer p-2 text-gray-400 dark:text-gray-200 dark:hover:bg-gray-700 rounded-full'>
                       <FaEllipsisV/>
                     </button>
                     { activeMenuId === c._id &&
-                      <div ref={menuRef} className='absolute top-8 right-3 bg-[#1f2933] border border-gray-700 rounded-md shadow-lg flex flex-col w-25 z-20'>
+                      <div ref={menuRef} className='absolute top-8 right-3 bg-[#505356] dark:bg-[#1f2933] border border-gray-700 rounded-md shadow-lg flex flex-col w-25 z-20'>
                         <button onClick={() => {
                           setEditingId(c._id)
                           setEditText(c.text)
                           setEditRating(c.rating)
                           setActiveMenuId(null)
-                        }}className='cursor-pointer px-4 py-2 text-left hover:rounded-md hover:bg-gray-800'>Edit</button>
+                        }}className='cursor-pointer px-4 py-2 text-left hover:rounded-md dark:hover:bg-gray-800'>Edit</button>
                         <button onClick={() => handleDelete(c._id)}className='cursor-pointer px-4 py-2 text-left hover:rounded-md
-                        hover:bg-gray-800 text-red-400'>Delete</button>
+                        dark:hover:bg-gray-800 text-red-400'>Delete</button>
                       </div>
                     }
                   </div>
                 </div>
-                <p className='pl-2 text-[14px] text-gray-200'>
+                <p className='pl-2 text-[14px] text-gray-400 dark:text-gray-200'>
                   {c.text}
                 </p>
               </div>

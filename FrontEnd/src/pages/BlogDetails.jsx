@@ -107,9 +107,9 @@ const BlogDetails = () => {
       </section>
 
       {/* CONTENT */}
-      <main className="bg-[#29323c] text-gray-100">
+      <main className="dark:bg-[#29323c] text-gray-100">
 
-        <article className="max-w-full mx-auto bg-[#1f2933] p-8 space-y-8">
+        <article className="max-w-full mx-auto dark:bg-[#1f2933] p-8 space-y-8">
 
           {/* Author Card */}
           <div className="flex items-center gap-4 border-b border-gray-700 pb-6">
@@ -119,7 +119,7 @@ const BlogDetails = () => {
             </div>
 
             <div>
-              <p className="font-semibold">{blogDetails.author}</p>
+              <p className="font-semibold text-gray-500 dark:text-white">{blogDetails.author}</p>
               <p className="text-xs text-gray-400">
                 Published Author
               </p>
@@ -128,7 +128,7 @@ const BlogDetails = () => {
           </div>
 
           {/* Blog Content */}
-          <div className="prose prose-invert max-w-none leading-relaxed text-gray-200">
+          <div className="prose prose-invert max-w-none leading-relaxed text-gray-400 dark:text-gray-200">
             {expanded || !isLong ? blogDetails.content : blogDetails.content.slice(0, CONTENT_LIMIT) + "..."}
             {
               isLong && !expanded && (
@@ -153,7 +153,7 @@ const BlogDetails = () => {
               Share this article:
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 text-gray-400 dark:text-gray-200">
               {[
                 {
                   name: "Twitter",
@@ -210,7 +210,7 @@ const BlogDetails = () => {
           <div className='fixed inset-0 bg-black/70 backdrop-blur flex items-center justify-center z-50'>
             <div className='bg-[#1f2933] p-6 rounded-xl border border-gray-700 w-75 text-center space-y-4'>
               <h2 className='text-[#00fd9a] font-semibold text-[18px]'>Login to continue</h2>
-              <p className='text-[14px] text-gray-400'>
+              <p className='text-[14px] text-gray-600 dark:text-gray-400 dar'>
                 Sign in with Google to read full content or comment.
               </p>
 
@@ -219,7 +219,7 @@ const BlogDetails = () => {
                 setExpanded(true)
               }}/>
 
-              <button onClick={() => setShowLogin(false)} className='text-[12px] text-gray-400 hover:underline'>
+              <button onClick={() => setShowLogin(false)} className='text-[12px] text-gray-600 dark:text-gray-400 hover:underline'>
                 Cancel
               </button>
             </div>

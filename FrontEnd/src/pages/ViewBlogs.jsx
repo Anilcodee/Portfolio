@@ -49,17 +49,17 @@ const ViewBlogs = () => {
     fetchBlogs()
   },[debouncedSearch, sort, selectedTag])
   return (
-    <div className='w-full min-h-screen text-gray-100 flex flex-col bg-linear-to-tr from-[#29323c] to-[#485563]'>
-      <section className='w-full flex h-16 px-6 justify-between items-center border-b border-gray-600 bg-[#1f2933] sticky top-0 z-50'>
+    <div className='w-full min-h-screen dark:text-gray-100 flex flex-col dark:bg-linear-to-tr dark:from-[#29323c] dark:to-[#485563] transition-colors duration-300'>
+      <section className='w-full flex h-16 px-6 justify-between items-center border-b border-gray-600 dark:border-gray-600 bg-white dark:bg-[#1f2933] sticky top-0 z-50 shadow-sm'>
         <div className='flex items-center gap-2'>
           <Codesandbox/>
-          <span className='font-bold hover:text-[#00df9a]'>
+          <span className='font-bold hover:text-[#00df9a] transition-colors'>
             <a href="/">Codee</a>
           </span>
         </div>
         <div>
           <nav className='flex gap-10'>
-            <a href="/" className='hover:text-[#00df9a] px-3 py-1 rounded-full hover:bg-gray-800 transition-transform duration-300 hover:scale-105'>Home</a>
+            <a href="/" className='hover:text-[#00df9a] px-3 py-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-105'>Home</a>
           </nav>
         </div>
       </section>
@@ -68,16 +68,16 @@ const ViewBlogs = () => {
         <div className='max-w-5xl mx-auto text-center space-y-12'>
             <div>
                 <h1 className='text-2xl font-bold mb-4'>Blogs & Insights</h1>
-                <p className='text-gray-400'>
+                <p className='text-gray-600 dark:text-gray-400'>
                     Thoughts, tutorials, and experiences on web development, backend systems, and building real-world applications.
                 </p>
             </div>
             <div className='flex flex-col gap-4 md:flex-row justify-between items-center'>
-                <form action="" className='border w-3/4 p-2 flex justify-between rounded-full border-white/10 bg-[#1f2933]'>
+                <form action="" className='border w-3/4 p-2 flex justify-between rounded-full border-gray-500 dark:border-white/10 dark:bg-[#1f2933]'>
                     <input type="text" value={search} onChange={(e) => setSearch(e.target.value)}placeholder={placeholder} className='w-full outline-none bg-transparent pl-4 text-[14px]'/>
-                    <button type="submit" className='border py-1 border-white/2 bg-[#485563] px-4 rounded-full hover:bg-gray-800 transition-transform duration-300 hover:scale-105 cursor-pointer'>Search</button>
+                    <button type="submit" className='border py-1 border-[#00fd9a] dark:border-white/2 dark:bg-[#485563] px-4 rounded-full dark:hover:bg-gray-700 transition-transform duration-300 hover:scale-105 cursor-pointer'>Search</button>
                 </form>
-                <select className='bg-[#1f2933] border border-gray-700 px-3 py-2 rounded text-[14px]' value={sort} onChange={(e) => setSort(e.target.value)}>
+                <select className='dark:bg-[#1f2933] border border-gray-700 px-3 py-2 rounded text-[14px]' value={sort} onChange={(e) => setSort(e.target.value)}>
                     <option value="latest">Latest</option>
                     <option value="oldest">Oldest</option>
                     <option value="views">Most Viewed</option>
@@ -85,8 +85,8 @@ const ViewBlogs = () => {
             </div>
             <div className='flex flex-wrap gap-3 justify-center'>
                 {["All", "React", "Backend", "MongoDB", "Node.js", "CSS", "JavaScript", "Career"].map(tag => (
-                    <button key={tag} onClick={() => setSelectedTag(tag === "All" ? "" : tag)} className={`px-4 py-1 rounded-full text-[14px] border transition ${
-                        selectedTag === tag ? "bg-[#00df9a] text-black border-[#00df9a]" : "border-gray-600 text-gray-300  hover:border-[#00df9a]"
+                    <button key={tag} onClick={() => setSelectedTag(tag === "All" ? "" : tag)} className={`cursor-pointer px-4 py-1 rounded-full text-[14px] border transition ${
+                        selectedTag === tag ? "bg-[#00df9a] text-black border-[#00df9a]" : "border-gray-600 dark:text-gray-300  hover:border-[#00df9a]"
                     }`}>
                         {tag}
                     </button>

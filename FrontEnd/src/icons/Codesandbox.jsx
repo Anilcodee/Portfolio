@@ -1,4 +1,6 @@
 import { motion, useAnimation } from "motion/react";
+import { useContext } from "react";
+import { ThemeContextData } from "../context/ThemeContext";
 
 const transition = {
   duration: 0.3,
@@ -24,10 +26,11 @@ const Codesandbox = ({
   width = 28,
   height = 28,
   strokeWidth = 2,
-  stroke = "#ffffff",
   ...props
 }) => {
   const controls = useAnimation();
+  const {theme} = useContext(ThemeContextData);
+  const stroke = theme === "dark" ? '#ffffff' : "#000000";
 
   return (
     <div

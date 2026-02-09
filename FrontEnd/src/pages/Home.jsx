@@ -20,6 +20,7 @@ import {SiPython, SiCplusplus, SiReact, SiNodedotjs, SiMongodb} from 'react-icon
 import { FaJava } from "react-icons/fa";
 import {FaCode} from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
+import ThemeToggle from '../components/ThemeToggle.jsx'
 
 const Home = () => {
   const [projects, setProjects] = useState([])
@@ -73,33 +74,39 @@ const Home = () => {
   )
 
   return (
-    <div className='w-full min-h-screen text-gray-100 flex flex-col bg-linear-to-tr from-[#29323c] to-[#485563]'>
-      <section className='w-full flex h-16 px-6 justify-between items-center border-b border-gray-600 bg-[#1f2933] sticky top-0 z-50'>
+    <div className='w-full min-h-screen dark:text-gray-100 flex flex-col dark:bg-linear-to-tr dark:from-[#29323c] dark:to-[#485563] transition-colors duration-300'>
+      <section className='w-full flex h-16 px-6 justify-between items-center border-b border-gray-600 dark:border-gray-600 bg-white dark:bg-[#1f2933] sticky top-0 z-50 shadow-sm'>
         <div className='flex items-center gap-2'>
           <Codesandbox/>
-          <span className='font-bold hover:text-[#00df9a]'>
+          <span className='font-bold hover:text-[#00df9a] transition-colors'>
             <a href="/">Codee</a>
           </span>
         </div>
         {/* Desktop */}
         <div>
           <nav className='hidden md:flex gap-10'>
-            <a href="#Home" className='hover:text-[#00df9a] px-3 py-1 rounded-full hover:bg-gray-800 transition-transform duration-300 hover:scale-105'>Home</a>
-            <a href="#About" className='hover:text-[#00df9a] px-3 py-1 rounded-full hover:bg-gray-800 transition-transform duration-300 hover:scale-105'>About</a>
-            <a href="#Projects" className='hover:text-[#00df9a] px-3 py-1 rounded-full hover:bg-gray-800 transition-transform duration-300 hover:scale-105'>Projects</a>
-            <a href="#Contact" className='hover:text-[#00df9a] px-3 py-1 rounded-full hover:bg-gray-800 transition-transform duration-300 hover:scale-105'>Contact</a>
-            <a href="/blogs" className='hover:text-[#00df9a] px-3 py-1 rounded-full hover:bg-gray-800 transition-transform duration-300 hover:scale-105'>Blogs</a>
+            <a href="#Home" className='hover:text-[#00df9a] px-3 py-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-105'>Home</a>
+            <a href="#About" className='hover:text-[#00df9a] px-3 py-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-105'>About</a>
+            <a href="#Projects" className='hover:text-[#00df9a] px-3 py-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-105'>Projects</a>
+            <a href="#Contact" className='hover:text-[#00df9a] px-3 py-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-105'>Contact</a>
+            <a href="/blogs" className='hover:text-[#00df9a] px-3 py-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 hover:scale-105'>Blogs</a>
+            <div>
+              <ThemeToggle/>
+            </div>
           </nav>
         </div>
 
-        <button className='md:hidden' onClick={() => setMenuOpen(!menuOpen)}>
-          <img src={hamburger} alt="Menu" className='w-6 h-6 hover:brightness-0 hover:invert transition' />
-        </button>
+        <div className='md:hidden flex justify-center items-center gap-4'>
+          <ThemeToggle/>
+          <button onClick={() => setMenuOpen(!menuOpen)}>
+            <img src={hamburger} alt="Menu" className='w-6 h-6 dark:invert transition cursor-pointer' />
+          </button>
+        </div>
       </section>
 
       {/* Mobile */}
         {menuOpen && (
-          <div className='md:hidden bg-[#1f2933] border-b border-gray-600'>
+          <div className='md:hidden bg-white dark:bg-[#1f2933] border-b border-gray-200 dark:border-gray-600'>
             <nav className='flex flex-col items-center gap-4 py-6'>
               <a href="#Home" onClick={() => setMenuOpen(false)}>Home</a>
               <a href="#About" onClick={() => setMenuOpen(false)}>About</a>
@@ -110,18 +117,18 @@ const Home = () => {
         </div>
         )}
 
-      <section id='Home' className='w-full flex flex-col md:flex-row justify-center items-center gap-12 py-20 border-b border-gray-600'>
+      <section id='Home' className='w-full flex flex-col md:flex-row justify-center items-center gap-12 py-20 border-b border-gray-200 dark:border-gray-600'>
         <ImageSkeleton
           src={optimizedImageProfile}
           alt="Profile"
           imageFallBack={image}
-          containerClass="w-40 h-40 md:w-48 md:h-48 p-2 border border-teal-400 rounded-md"
+          containerClass="w-40 h-40 md:w-48 md:h-48 p-2 border border-teal-400 dark:border-teal-500 rounded-md"
         />
         <div className='font-bold text-3xl text-center md:text-left flex flex-col justify-center items-center gap-2'>
           Hi, I’m Anil
           <div className='text-[20px]'>Full-Stack Developer</div>
-          <div className='text-[16px] text-gray-300 max-w-md'>Turning ideas into clean, functional web experiences.</div>
-          <div className="role-switch w-70 flex justify-between mt-4">
+          <div className='text-[16px] text-gray-600 dark:text-gray-300 max-w-md'>Turning ideas into clean, functional web experiences.</div>
+          <div className="role-switch w-70 flex border border-teal-400 dark:border-gray-500  justify-between mt-4">
             <span className="highlight"></span>
             <span className="role coder">Coder</span>
             <span className="role developer">Developer</span>
@@ -129,12 +136,12 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="About" className="w-full py-24 border-b border-white/10">
+      <section id="About" className="w-full py-24 border-b border-gray-200 dark:border-white/10">
         <div className="max-w-3xl mx-auto text-center space-y-12">
 
           <div>
             <h2 className="text-2xl font-bold mb-4">About Me</h2>
-            <p className="text-gray-300">
+            <p className="text-gray-600 dark:text-gray-300">
               I’m a B.Tech student in Computer Science and Biosciences at IIIT-Delhi
               (IIITD’28), with a strong interest in software development and AI.
               I enjoy building full-stack applications and improving backend systems.
@@ -156,7 +163,7 @@ const Home = () => {
                   className="
                     flex items-center gap-2
                     px-4 py-1.5 rounded-full
-                    bg-gray-800 text-gray-200
+                    bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200
                     hover:bg-[#00df9a] hover:text-black
                     transition-all duration-200 hover:scale-105 active:scale-95
                   "
@@ -171,7 +178,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="Projects" className='w-full py-20 border-b border-gray-600'>
+      <section id="Projects" className='w-full py-20 border-b border-gray-200 dark:border-gray-600'>
         <h1 className='text-center font-bold text-xl mb-12'>Projects</h1>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-12 place-items-center'>
           {
@@ -195,7 +202,7 @@ const Home = () => {
 
       <section id="Contact" className='w-full py-20'>
         <div className='text-center space-y-2'>
-          <p>Feel free to reach out if you’d like to collaborate or just say hello.</p>
+          <p className='text-gray-600 dark:text-gray-300'>Feel free to reach out if you’d like to collaborate or just say hello.</p>
           
           {showContactForm && (
             <div className="mb-10 mt-10">
@@ -209,21 +216,21 @@ const Home = () => {
         </div>
 
         <div className='text-center gap-2 mt-6'>
-          <h2 className='text-[12px] my-2'>Find me on</h2>
+          <h2 className='text-[12px] my-2 text-gray-500 dark:text-gray-400'>Find me on</h2>
           <div className='flex justify-center items-center gap-2'>
             <a href="https://github.com/Anilcodee">
-              <img src={github} alt="GitHub" className='w-10 h-10 hover:brightness-0 hover:invert transition' loading='lazy'/>
+              <img src={github} alt="GitHub" className='w-10 h-10 dark:invert hover:opacity-70 transition' loading='lazy'/>
             </a>
             <a href="https://www.linkedin.com/in/anil-b16b86342/">
-              <img src={linkedin} alt="LinkedIn" className='w-10 h-10 hover:brightness-0 hover:invert transition' loading='lazy'/>
+              <img src={linkedin} alt="LinkedIn" className='w-10 h-10 dark:invert hover:opacity-70 transition' loading='lazy'/>
             </a>
             <a href="https://www.instagram.com/anilk_mar886041/">
-              <img src={instagram} alt="Instagram" className='w-8 h-8 hover:brightness-0 hover:invert transition' loading='lazy'/>
+              <img src={instagram} alt="Instagram" className='w-8 h-8 dark:invert hover:opacity-70 transition' loading='lazy'/>
             </a>
           </div>
         </div>
 
-        <footer className='text-center py-6 text-gray-400 text-[12px]'>
+        <footer className='text-center py-6 text-gray-500 dark:text-gray-400 text-[12px]'>
           © 2025 Anil · Built with React & Tailwind CSS
         </footer>
       </section>

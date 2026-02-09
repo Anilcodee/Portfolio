@@ -37,7 +37,7 @@
   color: #0f172a;
 }
 .developer {
-  color: white;
+  color: rgb(159, 159, 159);
 }
 
 /* Hover → Developer highlighted */
@@ -46,7 +46,7 @@
 }
 
 .role-switch:hover .coder {
-  color: white;
+  color: gray;
 }
 
 .role-switch:hover .developer {
