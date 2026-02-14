@@ -21,6 +21,7 @@ import { FaJava } from "react-icons/fa";
 import {FaCode} from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import ThemeToggle from '../components/ThemeToggle.jsx'
+import ProjectCardSkeleton from '../components/ProjectCardSkeleton.jsx'
 
 const Home = () => {
   const [projects, setProjects] = useState([])
@@ -181,8 +182,14 @@ const Home = () => {
       <section id="Projects" className='w-full py-20 border-b border-gray-200 dark:border-gray-600'>
         <h1 className='text-center font-bold text-xl mb-12'>Projects</h1>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-12 place-items-center'>
-          {
-            
+          { !projects &&
+            [1, 2].map((p) => (
+              <div key={p}>
+                <ProjectCardSkeleton/>
+              </div>
+            ))
+          }
+          { projects &&
             projects.map((p) => (
               <div key={p._id}>
                 <ProjectCard

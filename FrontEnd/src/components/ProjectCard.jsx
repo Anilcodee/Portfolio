@@ -7,12 +7,6 @@ const ProjectCard = ({ title, desc, tech, github, live, img }) => {
     "/upload/",
     "/upload/f_auto,q_auto,w_600/"
   )
-  const value = {
-    title, desc, tech, github, live, img
-  }
-  if(!value){
-    return <ProjectCardSkeleton/>
-  }
   return (
     <div
       className="max-w-90 dark:bg-[#1f2933] rounded-xl overflow-hidden border border-gray-700 transition-all duration-300 hover:-translate-y-2 hover:border-[#00df9a] hover:shadow-xl hover:shadow-black/30">
