@@ -30,11 +30,11 @@ const MessageForm = ({ onClose }) => {
     }
   }
   return (
-    <div className="bg-[#1f2933] p-6 rounded-xl border border-gray-700 max-w-md mx-auto">
+    <div className="dark:bg-[#1f2933] p-6 rounded-xl border border-gray-700 max-w-md mx-auto">
       
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold">Contact Me</h3>
-        <button onClick={onClose} className="text-gray-400 hover:text-white">
+        <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
           ✕
         </button>
       </div>
@@ -56,7 +56,7 @@ const MessageForm = ({ onClose }) => {
 
         <div className='flex flex-col gap-2 text-[14px] mb-5'>
             <h3 className='text-start'>Message :</h3>
-            <textarea rows={6} className='text-[12px] pl-2 rounded border outline-none border-gray-500 hover:border-[#00df9a] transition' placeholder="Write your message here. I’ll get back to you soon."
+            <textarea rows={6} className='text-[12px] pl-2 rounded border outline-none border-gray-500 hover:border-[#00df9a] transition resize-none' placeholder="Write your message here. I’ll get back to you soon."
               value={userMessage} onChange={(e) => setUserMessage(e.target.value)}
             />
         </div>

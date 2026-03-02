@@ -3,7 +3,7 @@ const BlogSkeleton = () => {
     <div className="animate-pulse">
 
       {/* HERO */}
-      <section className="relative h-[55vh] min-h-90 w-full bg-gray-800">
+      <section className="relative h-[55vh] min-h-90 w-full dark:bg-gray-800">
         <div className="absolute inset-0 bg-gray-700" />
 
         <div className="relative z-10 max-w-full mx-auto px-8 h-full flex flex-col justify-end pb-12">

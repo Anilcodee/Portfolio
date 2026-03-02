@@ -75,7 +75,7 @@ const ViewBlogs = () => {
             <div className='flex flex-col gap-4 md:flex-row justify-between items-center'>
                 <form action="" className='border w-3/4 p-2 flex justify-between rounded-full border-gray-500 dark:border-white/10 dark:bg-[#1f2933]'>
                     <input type="text" value={search} onChange={(e) => setSearch(e.target.value)}placeholder={placeholder} className='w-full outline-none bg-transparent pl-4 text-[14px]'/>
-                    <button type="submit" className='border py-1 border-[#00fd9a] dark:border-white/2 dark:bg-[#485563] px-4 rounded-full dark:hover:bg-gray-700 transition-transform duration-300 hover:scale-105 cursor-pointer'>Search</button>
+                    <button type="submit" className='border py-1 border-gray-400 dark:border-white/2 dark:bg-[#485563] px-4 rounded-full dark:hover:bg-gray-700 transition-transform duration-300 bg-[#cacaca] hover:bg-[#a7a7a7] cursor-pointer'>Search</button>
                 </form>
                 <select className='dark:bg-[#1f2933] border border-gray-700 px-3 py-2 rounded text-[14px]' value={sort} onChange={(e) => setSort(e.target.value)}>
                     <option value="latest">Latest</option>
@@ -84,13 +84,28 @@ const ViewBlogs = () => {
                 </select>
             </div>
             <div className='flex flex-wrap gap-3 justify-center'>
-                {["All", "React", "Backend", "MongoDB", "Node.js", "CSS", "JavaScript", "Career"].map(tag => (
-                    <button key={tag} onClick={() => setSelectedTag(tag === "All" ? "" : tag)} className={`cursor-pointer px-4 py-1 rounded-full text-[14px] border transition ${
-                        selectedTag === tag ? "bg-[#00df9a] text-black border-[#00df9a]" : "border-gray-600 dark:text-gray-300  hover:border-[#00df9a]"
-                    }`}>
-                        {tag}
-                    </button>
-                ))}
+              {["All", "React", "Backend", "MongoDB", "Node.js", "CSS", "JavaScript", "Career"].map(tag => {
+
+                const isActive =
+                  (tag === "All" && selectedTag === "") ||
+                  selectedTag === tag
+
+                return (
+                  <button
+                    key={tag}
+                    onClick={() => setSelectedTag(tag === "All" ? "" : tag)}
+                    className={`cursor-pointer px-4 py-1 rounded-full text-[14px] border transition
+                      ${
+                        isActive
+                          ? "bg-[#00df9a] text-black border-[#00df9a]"
+                          : "border-gray-600 dark:text-gray-300 hover:border-[#00df9a]"
+                      }
+                    `}
+                  >
+                    {tag}
+                  </button>
+                )
+              })}
             </div>
         </div>
       </section>

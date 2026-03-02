@@ -3,7 +3,7 @@ import React from 'react'
 const ProjectCardSkeleton = () => {
   return (
     <div
-      className="max-w-90 bg-[#1f2933] rounded-xl overflow-hidden border border-gray-700 animate-pulse">
+      className="max-w-90 dark:bg-[#1f2933] rounded-xl overflow-hidden border border-gray-700 animate-pulse">
 
       {/* IMAGE */}
       <div className="h-48 bg-gray-700" />
